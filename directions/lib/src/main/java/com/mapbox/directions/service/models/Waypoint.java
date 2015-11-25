@@ -5,8 +5,8 @@ package com.mapbox.directions.service.models;
  */
 public class Waypoint {
 
-    public double latitude;
-    public double longitude;
+    private double latitude;
+    private double longitude;
 
     public Waypoint(double longitude, double latitude) {
         this.longitude = longitude;
@@ -17,16 +17,15 @@ public class Waypoint {
         return latitude;
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
-
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
-
 }

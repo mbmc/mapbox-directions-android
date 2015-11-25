@@ -5,10 +5,13 @@ package com.mapbox.directions.service.models;
  */
 public class FeatureProperties {
 
-    public String name;
+    private String name;
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

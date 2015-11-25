@@ -24,15 +24,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Debug
-        testDirections();
+        // Sample
+        simpleSample();
     }
 
-    private void testDirections() {
+    private void simpleSample() {
         // Dupont Circle
         Waypoint origin = new Waypoint(-77.04341, 38.90962);
 
-        // White House
+        // The White House
         Waypoint destination = new Waypoint(-77.0365, 38.8977);
 
         MapboxDirections md = new MapboxDirections.Builder()
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Throwable t) {
-                Log.d(LOG_TAG, "onFailure: " + t.getMessage());
+                Log.d(LOG_TAG, "Error: " + t.getMessage());
             }
         });
     }

@@ -5,20 +5,31 @@ package com.mapbox.directions.service.models;
  */
 public class DirectionsFeature {
 
-    public String type;
-    public FeatureGeometry geometry;
-    public FeatureProperties properties;
+    private String type;
+    private FeatureGeometry geometry;
+    private FeatureProperties properties;
 
     public String getType() {
         return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public FeatureGeometry getGeometry() {
         return geometry;
     }
 
+    public void setGeometry(FeatureGeometry geometry) {
+        this.geometry = geometry;
+    }
+
     public FeatureProperties getProperties() {
         return properties;
     }
 
+    public void setProperties(FeatureProperties properties) {
+        this.properties = properties;
+    }
 }

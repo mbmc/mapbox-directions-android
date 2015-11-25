@@ -8,8 +8,8 @@ import java.util.List;
  */
 public class RouteGeometry {
 
-    public String type;
-    public List<List<Double>> coordinates;
+    private String type;
+    private List<List<Double>> coordinates;
 
     public RouteGeometry() {
         coordinates = new ArrayList<>();
@@ -19,8 +19,15 @@ public class RouteGeometry {
         return type;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public List<List<Double>> getCoordinates() {
         return coordinates;
     }
 
+    public void setCoordinates(List<List<Double>> coordinates) {
+        this.coordinates = coordinates;
+    }
 }
