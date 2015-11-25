@@ -13,14 +13,14 @@ Soon, you'll be able to download the latest version from Maven.
 
 To benefit from the full Mapbox Directions API, use the `MapboxDirections` object.
 
-For example, to get walking directions from Dupont Circle to the White House
+For example, to get walking directions from Dupont Circle to The White House
 (in Washington, DC) you could do the following:
 
 ```
 // Dupont Circle
 Waypoint origin = new Waypoint(-77.04341, 38.90962);
 
-// White House
+// The White House
 Waypoint destination = new Waypoint(-77.0365, 38.8977);
 
 MapboxDirections md = new MapboxDirections.Builder()
