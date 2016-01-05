@@ -178,7 +178,15 @@ public class MapboxDirections {
             return this;
         }
 
+        // Checks if the given token is valid
+        private void validateAccessToken(String accessToken) {
+            if (TextUtils.isEmpty(accessToken) || (!accessToken.startsWith("pk.") && !accessToken.startsWith("sk."))) {
+                throw new RuntimeException("Using the Mapbox Directions API requires setting a valid access token.");
+            }
+        }
+
         public MapboxDirections build() {
+            validateAccessToken(_accessToken);
             return new MapboxDirections(this);
         }
 
