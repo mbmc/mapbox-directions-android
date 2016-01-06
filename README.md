@@ -1,3 +1,5 @@
+[![Build Status](https://www.bitrise.io/app/4fa9008ceaa7333b.svg?token=YQNIrrCsOqBJ1tEZcNtv_Q&branch=master)](https://www.bitrise.io/app/4fa9008ceaa7333b)
+
 # Mapbox directions client for Android
 
 [Mapbox Directions](https://www.mapbox.com/developers/api/directions/) client for Android.
