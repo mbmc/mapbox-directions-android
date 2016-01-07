@@ -30,4 +30,21 @@ public class RouteGeometry {
     public void setCoordinates(List<List<Double>> coordinates) {
         this.coordinates = coordinates;
     }
+
+    /*
+     * Bring some consistency to our latlon objects
+     */
+
+    public List<Waypoint> getWaypoints() {
+        List<Waypoint> waypoints = new ArrayList<>();
+
+        // Parse raw pairs
+        List<List<Double>> coordinates = this.getCoordinates();
+        for (List<Double> coordinate: coordinates) {
+            waypoints.add(new Waypoint(coordinate.get(0), coordinate.get(1)));
+        }
+
+        return waypoints;
+    }
+
 }
