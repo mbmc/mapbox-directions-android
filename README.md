@@ -6,10 +6,36 @@
 
 ## Installation
 
-For now, compile the `lib` module in the `directions` folder and include the
-resulting `.aar` file in your project as a new module.
+We recommend installing with Gradle. This will automatically install the necessary dependencies and pull the SDK binaries from the Mapbox Android SDK repository on Maven Central.
 
-Soon, you'll be able to download the latest version from Maven.
+To install the current _stable version_ add this to your `build.gradle`:
+
+```
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile ('com.mapbox.mapboxsdk:mapbox-android-directions:1.0.0@aar'){
+        transitive=true
+    }
+}
+```
+
+To install the current _SNAPSHOT_ version add this to your `build.gradle`:
+
+```
+repositories {
+    mavenCentral()
+    maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+dependencies {
+    compile ('com.mapbox.mapboxsdk:mapbox-android-directions:1.0.0-SNAPSHOT@aar'){
+        transitive=true
+    }
+}
+```
 
 ## Usage
 
@@ -44,4 +70,15 @@ Or an asynchronous request (you need to provide your own `Callback<DirectionsRes
 
 ```
 client.enqueue(callback)
+```
+
+## Response object
+
+The `DirectionsResponse` object contains all the information about the routes as computed by our directions engine.
+
+For example, you can get the distance and duration for the sample route queried above with:
+
+```
+response.body().getRoutes().get(0).getDistance() // 1553 (in meters)
+response.body().getRoutes().get(0).getDuration() // 1134 (in seconds)
 ```
