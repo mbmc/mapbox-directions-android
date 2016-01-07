@@ -71,3 +71,14 @@ Or an asynchronous request (you need to provide your own `Callback<DirectionsRes
 ```
 client.enqueue(callback)
 ```
+
+## Response object
+
+The `DirectionsResponse` object contains all the information about the routes as computed by our directions engine.
+
+For example, you can get the distance and duration for the sample route queried above with:
+
+```
+response.body().getRoutes().get(0).getDistance() // 1553 (in meters)
+response.body().getRoutes().get(0).getDuration() // 1134 (in seconds)
+```
