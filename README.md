@@ -82,3 +82,7 @@ For example, you can get the distance and duration for the sample route queried 
 response.body().getRoutes().get(0).getDistance() // 1553 (in meters)
 response.body().getRoutes().get(0).getDuration() // 1134 (in seconds)
 ```
+
+## Sample code
+
+Check the [Test App](https://github.com/mapbox/mapbox-directions-android/tree/master/directions/app) for a complete demo app using this SDK.
