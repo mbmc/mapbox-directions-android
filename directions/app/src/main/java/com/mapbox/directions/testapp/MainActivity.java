@@ -2,6 +2,7 @@ package com.mapbox.directions.testapp;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         // We're gonna use this to demo off-route detection
         mapView.setOnMapClickListener(new MapView.OnMapClickListener() {
             @Override
-            public void onMapClick(LatLng point) {
+            public void onMapClick(@NonNull LatLng point) {
                 Waypoint target = new Waypoint(point.getLongitude(), point.getLatitude());
                 checkOffRoute(target);
             }
@@ -69,10 +70,12 @@ public class MainActivity extends AppCompatActivity {
         // Add origin and destination to the map
         mapView.addMarker(new MarkerOptions()
                 .position(new LatLng(origin.getLatitude(), origin.getLongitude()))
-                .title("Origin"));
+                .title("Origin")
+                .snippet("Dupont Circle"));
         mapView.addMarker(new MarkerOptions()
                 .position(new LatLng(destination.getLatitude(), destination.getLongitude()))
-                .title("Destination"));
+                .title("Destination")
+                .snippet("The White House"));
 
         // Get route from API
         getRoute(origin, destination);
@@ -126,10 +129,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkOffRoute(Waypoint target) {
-        showMessage("TODO");
+        if (currentRoute.isOffRoute(target)) {
+            showMessage("You are off-route.");
+        } else {
+            showMessage("You are not off-route.");
+        }
     }
 
     private void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

@@ -30,6 +30,9 @@ public class MapboxDirections {
 
     private final static String BASE_URL = "https://api.mapbox.com";
 
+    // 50 meters
+    public final static double OFF_ROUTE_THRESHOLD = 50;
+
     private Call<DirectionsResponse> _call;
 
     public MapboxDirections(Builder builder) {
