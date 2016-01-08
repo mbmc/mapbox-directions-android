@@ -70,7 +70,7 @@ workflows:
         inputs:
         - content: |-
             #!/bin/bash
-            aws s3 cp s3://mapbox/android/signing-credentials/secring.gpg directions/secring.gpg
+            aws s3 cp s3://mapbox/android/signing-credentials/secring.gpg directions/lib/secring.gpg
           opts:
             is_expand: true
     - script:
