@@ -61,7 +61,9 @@ public class DirectionsRoute {
     }
 
     /*
-     * Off-route detection
+     * A first approximation, reducing external library dependencies, to off-route detection.
+     * It checks that the user distance to any of the points that defines the route is less than
+     * the OFF_ROUTE_THRESHOLD (0.1 miles).
      */
 
     public boolean isOffRoute(Waypoint target) {
@@ -80,19 +82,21 @@ public class DirectionsRoute {
 
     /*
      * See: https://github.com/Turfjs/turf-distance
-     * (in meters)
+     * The result is provided in in miles.
      */
 
     private double computeDistance(Waypoint from, Waypoint to) {
         double dLat = Math.toRadians(to.getLatitude() - from.getLatitude());
         double dLon = Math.toRadians(to.getLongitude() - from.getLongitude());
         double lat1 = Math.toRadians(from.getLatitude());
-        double lat2 = Math.toRadians(from.getLatitude());
+        double lat2 = Math.toRadians(to.getLatitude());
 
-        double a = Math.pow(Math.sin(dLat/2), 2) +
-                Math.pow(Math.sin(dLon/2), 2) * Math.cos(lat1) * Math.cos(lat2);
+        double a = Math.pow(Math.sin(dLat/2), 2) + Math.pow(Math.sin(dLon/2), 2) * Math.cos(lat1) * Math.cos(lat2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        double distance = 6373 * 1000 * c;
+
+        double R = 3960;
+
+        double distance = R * c;
         return distance;
     }
 }
