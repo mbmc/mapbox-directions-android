@@ -4,6 +4,8 @@
 
 [Mapbox Directions](https://www.mapbox.com/developers/api/directions/) client for Android.
 
+![Screenshot](https://raw.githubusercontent.com/mapbox/mapbox-directions-android/master/screenshot.png?token=AAAbNIrfSwudsPYrJL6ZTkW_aCde1-edks5WmCjCwA%3D%3D)
+
 ## Installation
 
 We recommend installing with Gradle. This will automatically install the necessary dependencies and pull the SDK binaries from the Mapbox Android SDK repository on Maven Central.
