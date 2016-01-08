@@ -18,7 +18,6 @@ import com.mapbox.mapboxsdk.constants.Style;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.views.MapView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
@@ -113,17 +112,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void drawRoute(DirectionsRoute route) {
-        // Convert Waypoints into LatLngs
-        List<LatLng> points = new ArrayList<>();
+        // Convert List<Waypoint> into LatLng[]
         List<Waypoint> waypoints = route.getGeometry().getWaypoints();
-        for (Waypoint waypoint: waypoints) {
-            points.add(new LatLng(waypoint.getLatitude(), waypoint.getLongitude()));
+        LatLng[] point = new LatLng[waypoints.size()];
+        for (int i = 0; i < waypoints.size(); i++) {
+            point[i] = new LatLng(
+                    waypoints.get(i).getLatitude(),
+                    waypoints.get(i).getLongitude());
         }
-        LatLng[] pointsArray = points.toArray(new LatLng[points.size()]);
 
         // Draw Points on MapView
         mapView.addPolyline(new PolylineOptions()
-                .add(pointsArray)
+                .add(point)
                 .color(Color.parseColor("#3887be"))
                 .width(5));
     }
