@@ -8,7 +8,7 @@
 
 ## Installation
 
-We recommend installing with Gradle. This will automatically install the necessary dependencies and pull the SDK binaries from the Mapbox Android SDK repository on Maven Central.
+We recommend installing with Gradle. This will automatically install the necessary dependencies and pull the library binaries from the Mapbox Android repository on Maven Central.
 
 To install the current _stable version_ add this to your `build.gradle`:
 
@@ -119,4 +119,4 @@ if (route.isOffRoute(userLocation)) {
 
 ## Sample code
 
-Check the [Test App](https://github.com/mapbox/mapbox-directions-android/tree/master/directions/app) for a complete demo app using this SDK.
+Check the [Test App](https://github.com/mapbox/mapbox-directions-android/tree/master/directions/app) for a complete demo app using this library.
