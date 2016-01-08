@@ -81,8 +81,40 @@ The `DirectionsResponse` object contains all the information about the routes as
 For example, you can get the distance and duration for the sample route queried above with:
 
 ```
-response.body().getRoutes().get(0).getDistance() // 1553 (in meters)
-response.body().getRoutes().get(0).getDuration() // 1134 (in seconds)
+DirectionsRoute route = response.body().getRoutes().get(0);
+route.getDistance() // 1553 (in meters)
+route.getDuration() // 1134 (in seconds)
+```
+
+## Draw the route on a map
+
+You can also draw the route path on a [Mapbox map](https://www.mapbox.com/android-sdk/) with only a few lines of code. Convert the route waypoints into a LatLng array, and pass it to the map object:
+
+```
+// Convert List<Waypoint> into LatLng[]
+List<Waypoint> waypoints = route.getGeometry().getWaypoints();
+LatLng[] point = new LatLng[waypoints.size()];
+for (int i = 0; i < waypoints.size(); i++) {
+    point[i] = new LatLng(
+            waypoints.get(i).getLatitude(),
+            waypoints.get(i).getLongitude());
+}
+
+// Draw Points on MapView
+mapView.addPolyline(new PolylineOptions()
+        .add(point)
+        .color(Color.parseColor("#3887be"))
+        .width(5));
+```
+
+## Detect when the user is off-route
+
+The `isOffRoute()` method will calculate the distance between the provided `userLocation` and every waypoint in the route, resulting in an off-route status if the distance is always bigger than a threshold (currently 0.1 miles):
+
+```
+if (route.isOffRoute(userLocation)) {
+    Toast.makeText(this, "You are off-route.", Toast.LENGTH_SHORT).show();
+}
 ```
 
 ## Sample code
